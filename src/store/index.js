@@ -4,21 +4,21 @@ import axios from 'axios'
 export default createStore({
   state: {
     counter: 0,
-    colorCode:"red"
+    colorCode: 'red'
   },
   getters: {
-    counterSquared(state){
-      return Math.pow(state.counter,2)
+    counterSquared(state) {
+      return Math.pow(state.counter, 2)
     }
   },
   mutations: {
     addCounter(state, number) {
       state.counter += number
     },
-    reduceCounter(state,number) {
+    reduceCounter(state, number) {
       state.counter -= number
     },
-    changeColor(state,value){
+    setColorCode(state, value) {
       state.colorCode = value
     }
   },
@@ -34,6 +34,9 @@ export default createStore({
         .then(res => {
           this.commit('reduceCounter', res.data)
         })
+    },
+    setColorCode({commit},value){
+      commit('setColorCode',value)
     }
   },
   modules: {
